@@ -1,0 +1,17 @@
+@import "../../scss/variables.module";
+.home {
+  background-color: $bg-primary;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    border: 1px solid #252525;
+    border-radius: 10px;
+    width: 65%;
+    height: 80%;
+    display: flex;
+    overflow: hidden;
+  }
+}
