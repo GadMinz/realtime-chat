@@ -1,4 +1,5 @@
 @import "variables.module";
+@import "form";
 
 *,
 *:after,
@@ -7,12 +8,14 @@
   padding: 0;
   margin: 0;
 }
+
 a:active,
 a:hover,
 a {
   text-decoration: none;
   color: inherit;
 }
+
 *,
 *:after,
 *:before {
@@ -23,6 +26,7 @@ a {
   border: none;
   box-sizing: border-box;
 }
+
 body {
   background-color: $bg-primary;
   color: $text-primary;

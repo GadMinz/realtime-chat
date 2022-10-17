@@ -1,0 +1,73 @@
+@import "variables.module";
+
+.formContainer {
+  background-color: $bg-primary;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .formWrapper {
+    background-color: $bg-secondary;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+
+    .logo {
+      color: $content-primary;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .title {
+      color: $text-primary;
+      font-size: 12px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      input {
+        padding: 15px;
+        border: none;
+        width: 100%;
+        background: $bg-input;
+        color: $text-primary;
+        &::placeholder {
+          color: $text-tertiary;
+        }
+      }
+
+      button {
+        background-color: $content-primary;
+        color: $bg-primary;
+        padding: 10px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #8da4f1;
+        font-size: 12px;
+        cursor: pointer;
+
+        img {
+          width: 32px;
+        }
+      }
+    }
+    p {
+      font-size: 12px;
+      margin-top: 10px;
+    }
+  }
+}
