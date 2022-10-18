@@ -4,6 +4,75 @@
   background-color: $bg-secondary;
   padding: 10px;
   flex: 1;
+  overflow: auto;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: $bg-secondary;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: $bg-secondary;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #acacac;
+  }
+
+  .message {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    &_info {
+      display: flex;
+      flex-direction: column;
+      color: #acacac;
+      font-weight: 300;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    &_content {
+      max-width: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      p {
+        background-color: $bg-input;
+        padding: 10px 20px;
+        border-radius: 0 10px 10px 10px;
+        max-width: max-content;
+      }
+
+      img {
+        width: 30%;
+      }
+    }
+    &.owner {
+      flex-direction: row-reverse;
+
+      .message_content {
+        align-items: flex-end;
+
+        p {
+          background-color: $bg-input;
+          border-radius: 10px 0 10px 10px;
+        }
+      }
+    }
+  }
 }
 
 .input {
@@ -13,6 +82,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   input {
     color: $text-primary;
     background-color: $bg-input;
@@ -20,6 +90,7 @@
     border: none;
     outline: none;
     font-size: 18px;
+
     &::placeholder {
       color: $text-tertiary;
     }

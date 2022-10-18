@@ -8,6 +8,24 @@ const Messages: React.FC<MessagesProps> = () => {
   return (
     <div className={s.messages}>
       <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
     </div>
   );
 };
