@@ -4,49 +4,54 @@
   flex: 1;
   background-color: $bg-tertiary;
   position: relative;
+  border-right: 1px solid #252525;
 }
 
 .navbar {
   display: flex;
   align-items: center;
-  background-color: #1b1b1b;
+  background-color: #101010;
   height: 60px;
   padding: 10px;
   justify-content: space-between;
   color: $content-primary;
-
-  .logo {
-    font-weight: bold;
-    font-size: 16px;
-  }
+  border-bottom: 1px solid #252525;
 
   .user {
     display: flex;
     gap: 10px;
     align-items: center;
+    font-size: 16px;
+
     span {
       font-weight: bold;
     }
 
     img {
-      height: 24px;
-      width: 24px;
+      max-width: 30px;
+      max-height: 30px;
       border-radius: 50%;
       object-fit: cover;
     }
+  }
 
-    button {
-      background: none;
-      border: none;
-      cursor: pointer;
+  button {
+    height: 100%;
+    cursor: pointer;
+
+    img {
+      height: 100%;
+      width: 100%;
     }
   }
 }
 
 .search {
   border-bottom: 1px solid $bg-input;
+
   .searchForm {
     padding: 10px;
+
     input {
       background-color: transparent;
       border: none;
@@ -84,6 +89,7 @@
       font-size: 18px;
       font-weight: 500;
     }
+
     p {
       font-size: 14px;
       color: $text-secondary;

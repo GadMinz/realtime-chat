@@ -1,0 +1,32 @@
+@import "../../scss/variables.module";
+
+.chat {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  &_info {
+    height: 60px;
+    background-color: #101010;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    color: $text-primary;
+    border-bottom: 1px solid #252525;
+
+    span {
+      font-weight: 600;
+      font-size: 16px;
+    }
+  }
+
+  &_icons {
+    display: flex;
+    gap: 10px;
+
+    svg {
+      height: 24px;
+      cursor: pointer;
+    }
+  }
+}

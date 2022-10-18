@@ -1,0 +1,42 @@
+@import "../../../scss/variables.module";
+
+.messages {
+  background-color: $bg-secondary;
+  padding: 10px;
+  flex: 1;
+}
+
+.input {
+  height: 50px;
+  background-color: $bg-input;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  input {
+    color: $text-primary;
+    background-color: $bg-input;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    &::placeholder {
+      color: $text-tertiary;
+    }
+  }
+}
+
+.send {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  img {
+    height: 24px;
+    cursor: pointer;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
