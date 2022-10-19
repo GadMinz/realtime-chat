@@ -15,6 +15,11 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    min-width: 400px;
+    @media screen and (max-width: 430px) {
+      padding: 20px;
+      min-width: inherit;
+    }
 
     .logo {
       color: $content-primary;
@@ -30,7 +35,7 @@
     form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      width: 100%;
 
       input {
         padding: 15px;
@@ -38,6 +43,8 @@
         width: 100%;
         background: $bg-input;
         color: $text-primary;
+        margin-bottom: 15px;
+
         &::placeholder {
           color: $text-tertiary;
         }
@@ -50,6 +57,11 @@
         font-weight: bold;
         border: none;
         cursor: pointer;
+
+        &:disabled {
+          background-color: $text-secondary;
+          cursor: not-allowed;
+        }
       }
 
       label {
@@ -65,9 +77,20 @@
         }
       }
     }
+
     p {
       font-size: 12px;
       margin-top: 10px;
+    }
+
+    .error {
+      color: $error;
+      margin-bottom: 5px;
+
+      &_input {
+        border: 1px solid $error;
+        margin-bottom: 0;
+      }
     }
   }
 }
