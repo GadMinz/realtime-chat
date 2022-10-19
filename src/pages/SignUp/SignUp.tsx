@@ -1,5 +1,7 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 
 interface SignUpProps {}
 
@@ -10,19 +12,29 @@ type FormValues = {
 };
 
 const SignUp: React.FC<SignUpProps> = () => {
+  const [err, setErr] = React.useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>({ mode: "onTouched" });
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    const { email, password } = data;
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      setErr(true);
+    }
+  };
 
   return (
     <div className="formContainer">
       <div className="formWrapper">
         <span className="logo">GadMinz Chat</span>
         <span className="title">Регистрация</span>
+        {err && <div className="error">Что-то пошло не так</div>}
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             className={errors?.nickname && "error_input"}
@@ -41,7 +53,13 @@ const SignUp: React.FC<SignUpProps> = () => {
           )}
           <input
             className={errors?.email && "error_input"}
-            {...register("email", { required: "Введите email" })}
+            {...register("email", {
+              required: "Введите email",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: "Некорректный email",
+              },
+            })}
             type="email"
             placeholder="Email"
           />
