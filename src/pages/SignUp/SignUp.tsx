@@ -15,7 +15,7 @@ type FormValues = {
 
 const SignUp: React.FC<SignUpProps> = () => {
   const [err, setErr] = React.useState(false);
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -24,7 +24,6 @@ const SignUp: React.FC<SignUpProps> = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const { nickname, email, password } = data;
-    const navigate = useNavigate();
 
     try {
       setErr(false);
