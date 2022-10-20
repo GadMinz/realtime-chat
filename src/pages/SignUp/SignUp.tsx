@@ -1,7 +1,9 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, db } from "../../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 interface SignUpProps {}
 
@@ -21,9 +23,25 @@ const SignUp: React.FC<SignUpProps> = () => {
   } = useForm<FormValues>({ mode: "onTouched" });
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    const { email, password } = data;
+    const { nickname, email, password } = data;
+    const navigate = useNavigate();
+
     try {
+      setErr(false);
       const res = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(res.user, {
+        displayName: nickname,
+      });
+      await setDoc(doc(db, "users", res.user.uid), {
+        uid: res.user.uid,
+        nickname,
+        email,
+        photoURL: res.user.photoURL,
+      });
+
+      await setDoc(doc(db, "userChats", res.user.uid), {});
+
+      navigate("/");
     } catch (error) {
       setErr(true);
     }
