@@ -15,6 +15,7 @@ type FormValues = {
 
 const SignUp: React.FC<SignUpProps> = () => {
   const [err, setErr] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
   const navigate = useNavigate();
   const {
     register,
@@ -26,6 +27,7 @@ const SignUp: React.FC<SignUpProps> = () => {
     const { nickname, email, password } = data;
 
     try {
+      setLoading(true)
       setErr(false);
       const res = await createUserWithEmailAndPassword(auth, email, password);
       try {
@@ -45,9 +47,11 @@ const SignUp: React.FC<SignUpProps> = () => {
       } catch (err) {
         console.log(err);
         setErr(true);
+        setLoading(false)
       }
     } catch (error) {
       setErr(true);
+      setLoading(false)
     }
   };
 
@@ -103,7 +107,7 @@ const SignUp: React.FC<SignUpProps> = () => {
           {errors?.password && (
             <div className="error">{errors?.password?.message}</div>
           )}
-          <button>Зарегистрироваться</button>
+          <button disabled={loading}>Зарегистрироваться</button>
         </form>
         <p>
           У вас уже есть аккаунт? <Link to="/login">Вход</Link>
