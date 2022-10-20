@@ -5,7 +5,8 @@ import { auth, db } from "../../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
-interface SignUpProps {}
+interface SignUpProps {
+}
 
 type FormValues = {
   nickname: string;
@@ -28,19 +29,24 @@ const SignUp: React.FC<SignUpProps> = () => {
     try {
       setErr(false);
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(res.user, {
-        displayName: nickname,
-      });
-      await setDoc(doc(db, "users", res.user.uid), {
-        uid: res.user.uid,
-        nickname,
-        email,
-        photoURL: res.user.photoURL,
-      });
+      try {
+        await updateProfile(res.user, {
+          displayName: nickname,
+        });
+        await setDoc(doc(db, "users", res.user.uid), {
+          uid: res.user.uid,
+          nickname,
+          email,
+          photoURL: res.user.photoURL,
+        });
 
-      await setDoc(doc(db, "userChats", res.user.uid), {});
+        await setDoc(doc(db, "userChats", res.user.uid), {});
 
-      navigate("/");
+        navigate("/");
+      } catch (err) {
+        console.log(err);
+        setErr(true);
+      }
     } catch (error) {
       setErr(true);
     }

@@ -38,3 +38,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
 }
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
