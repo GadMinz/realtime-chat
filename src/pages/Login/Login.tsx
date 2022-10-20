@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface LoginProps {}
 
@@ -13,7 +14,9 @@ const Login: React.FC<LoginProps> = () => {
           <input type="password" placeholder="Пароль" />
           <button>Войти</button>
         </form>
-        <p>У вас еще нет аккаунта? Регистрация</p>
+        <p>
+          У вас еще нет аккаунта? <Link to="/signup">Регистрация</Link>
+        </p>
       </div>
     </div>
   );

@@ -3,10 +3,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../../firebase";
 import { doc, setDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-interface SignUpProps {
-}
+interface SignUpProps {}
 
 type FormValues = {
   nickname: string;
@@ -106,7 +105,9 @@ const SignUp: React.FC<SignUpProps> = () => {
           )}
           <button>Зарегистрироваться</button>
         </form>
-        <p>У вас уже есть аккаунт? Вход</p>
+        <p>
+          У вас уже есть аккаунт? <Link to="/login">Вход</Link>
+        </p>
       </div>
     </div>
   );

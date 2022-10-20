@@ -20,6 +20,7 @@
       padding: 20px;
       min-width: inherit;
     }
+
     .logo {
       color: $content-primary;
       font-weight: bold;
@@ -75,6 +76,10 @@
           width: 32px;
         }
       }
+    }
+
+    a {
+      color: $content-primary;
     }
 
     p {
