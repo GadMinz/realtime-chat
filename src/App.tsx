@@ -32,7 +32,7 @@ const App: React.FC = () => {
       unsub();
     };
   }, []);
-  console.log(loading);
+
   if (loading) {
     return <Loading />;
   }
