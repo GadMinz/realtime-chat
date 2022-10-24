@@ -27,7 +27,7 @@ const SignUp: React.FC<SignUpProps> = () => {
     const { nickname, email, password } = data;
 
     try {
-      setLoading(true)
+      setLoading(true);
       setErr(false);
       const res = await createUserWithEmailAndPassword(auth, email, password);
       try {
@@ -45,13 +45,12 @@ const SignUp: React.FC<SignUpProps> = () => {
 
         navigate("/");
       } catch (err) {
-        console.log(err);
         setErr(true);
-        setLoading(false)
+        setLoading(false);
       }
     } catch (error) {
       setErr(true);
-      setLoading(false)
+      setLoading(false);
     }
   };
 

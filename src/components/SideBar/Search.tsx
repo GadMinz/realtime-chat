@@ -17,25 +17,22 @@ import { User } from "../../redux/types";
 import avatar from "../../assets/img/avatar.jpg";
 
 interface SearchProps {
-  currentUser: User
+  currentUser: User;
 }
 
-const Search: React.FC<SearchProps> = ({currentUser}) => {
+const Search: React.FC<SearchProps> = ({ currentUser }) => {
   const [userName, setUserName] = React.useState("");
   const [user, setUser] = React.useState<User | null>(null);
   const [err, setErr] = React.useState(false);
 
   const handleSearch = async () => {
     const q = query(collection(db, "users"), where("nickname", "==", userName));
-    console.log("start");
     try {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        console.log(doc);
         setUser(doc.data());
       });
     } catch (err) {
-      console.log("err");
       setErr(true);
     }
   };
