@@ -3,15 +3,14 @@ import s from "./SideBar.module.scss";
 import logoutImg from "../../assets/icons/logout.svg";
 import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
-import { useAppSelector } from "../../hook";
 import avatar from "../../assets/img/avatar.jpg";
+import {User} from "../../redux/types";
 
-interface NavBarProps {}
+interface NavBarProps {
+    currentUser: User
+}
 
-const NavBar: React.FC<NavBarProps> = () => {
-  const { currentUser } = useAppSelector((state) => state.auth);
-  if (!currentUser) return null;
-
+const NavBar: React.FC<NavBarProps> = ({currentUser}) => {
   return (
     <div className={s.navbar}>
       <div className={s.user}>

@@ -15,16 +15,15 @@ import {
 import { db } from "../../firebase";
 import { User } from "../../redux/types";
 import avatar from "../../assets/img/avatar.jpg";
-import { useAppSelector } from "../../hook";
 
-interface SearchProps {}
+interface SearchProps {
+  currentUser: User
+}
 
-const Search: React.FC<SearchProps> = () => {
+const Search: React.FC<SearchProps> = ({currentUser}) => {
   const [userName, setUserName] = React.useState("");
   const [user, setUser] = React.useState<User | null>(null);
   const [err, setErr] = React.useState(false);
-  const { currentUser } = useAppSelector((state) => state.auth);
-  if (!currentUser) return null;
 
   const handleSearch = async () => {
     const q = query(collection(db, "users"), where("nickname", "==", userName));
