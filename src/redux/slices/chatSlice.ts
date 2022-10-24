@@ -1,7 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "../types";
 
-const initialState = {
+type Chat = {
+  chatId: string;
+  user: User;
+};
+
+const initialState: Chat = {
   chatId: "null",
   user: {},
 };
