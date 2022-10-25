@@ -6,9 +6,12 @@ import { db } from "../../../firebase";
 import { useAppSelector } from "../../../hook";
 
 interface MessagesProps {}
-
+type TDate = {
+  seconds: number,
+  nanoseconds: number
+}
 export type TMessage = {
-  date: Date;
+  date: TDate;
   id: string;
   text: string;
   senderId: string;

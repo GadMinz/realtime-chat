@@ -5,7 +5,13 @@ import attach from "../../../assets/icons/attachment.svg";
 import send from "../../../assets/icons/send.svg";
 import { useAppSelector } from "../../../hook";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { arrayUnion, doc, serverTimestamp, Timestamp, updateDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  doc,
+  serverTimestamp,
+  Timestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { db, storage } from "../../../firebase";
 import { v4 as uuid } from "uuid";
 
@@ -26,7 +32,7 @@ const Input: React.FC<InputProps> = () => {
 
       uploadTask.on(
         (error) => {
-          console.log(error)
+          console.log(error);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -74,12 +80,19 @@ const Input: React.FC<InputProps> = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setImg(e.target.files ? e.target.files[0] : null);
   };
+  const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === "Enter" || e.code === "NumpadEnter") {
+      handleSend();
+    }
+  };
+
   return (
     <div className={s.input}>
       <input
         type="text"
         placeholder="Написать сообщение..."
         onChange={(e) => setText(e.target.value)}
+        onKeyDown={handleKey}
         value={text}
       />
       <div className={s.send}>

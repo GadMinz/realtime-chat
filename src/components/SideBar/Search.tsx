@@ -38,7 +38,9 @@ const Search: React.FC<SearchProps> = ({ currentUser }) => {
   };
 
   const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    e.code === "Enter" && handleSearch();
+    if (e.code === "Enter" || e.code === "NumpadEnter") {
+      handleSearch();
+    }
   };
 
   const handleSelect = async () => {
