@@ -4,10 +4,10 @@ import Messages from "./Messages/Messages";
 import Input from "./Messages/Input";
 
 interface ChatProps {
-    user: string
+  user: string;
 }
 
-const Chat: React.FC<ChatProps> = ({user}) => {
+const Chat: React.FC<ChatProps> = ({ user }) => {
   return (
     <div className={s.chat}>
       <div className={s.chat_info}>
@@ -18,6 +18,7 @@ const Chat: React.FC<ChatProps> = ({user}) => {
             width="24"
             height="24"
             viewBox="0 0 24 24"
+            onClick={() => alert("Не трогай это")}
           >
             <path
               fill="#FF9900"
