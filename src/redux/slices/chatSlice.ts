@@ -25,7 +25,8 @@ const chatSlice = createSlice({
       state.chatId = action.payload.chatId;
     },
     clearUser(state) {
-      state = initialState;
+      state.user = {};
+      state.chatId = "null";
     },
   },
 });
