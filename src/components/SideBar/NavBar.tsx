@@ -9,6 +9,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { doc, updateDoc } from "firebase/firestore";
 import { useAppDispatch } from "../../hook";
 import { setUser } from "../../redux/slices/authSlice";
+import { clearUser } from "../../redux/slices/chatSlice";
 
 interface NavBarProps {
   currentUser: User;
@@ -53,6 +54,10 @@ const NavBar: React.FC<NavBarProps> = ({ currentUser }) => {
       });
     });
   };
+  const LogOut = async () => {
+    await signOut(auth);
+    dispatch(clearUser());
+  };
   return (
     <div className={s.navbar}>
       <div className={s.user}>
@@ -73,7 +78,7 @@ const NavBar: React.FC<NavBarProps> = ({ currentUser }) => {
         </div>
         <span>{currentUser.nickname}</span>
       </div>
-      <button onClick={() => signOut(auth)}>
+      <button onClick={LogOut}>
         <img src={logoutImg} alt="logout" />
       </button>
     </div>

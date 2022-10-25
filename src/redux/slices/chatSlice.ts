@@ -24,9 +24,12 @@ const chatSlice = createSlice({
       state.user = action.payload.user;
       state.chatId = action.payload.chatId;
     },
+    clearUser(state) {
+      state = initialState;
+    },
   },
 });
 
-export const { changeUser } = chatSlice.actions;
+export const { changeUser, clearUser } = chatSlice.actions;
 
 export default chatSlice.reducer;
