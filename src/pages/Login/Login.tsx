@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
+import logo from "../../assets/img/logo.png";
 
 type FormValues = {
   email: string;
@@ -34,8 +35,9 @@ const Login: React.FC = () => {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">GadMinz Chat</span>
-        <span className="title">Вход</span>
+        <div className="logo">
+          <img src={logo} alt="logo" />
+        </div>
         {err && <div className="error">{err}</div>}
         <form onSubmit={handleSubmit(onSubmit)}>
           <input

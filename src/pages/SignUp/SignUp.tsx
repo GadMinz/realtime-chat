@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
+import logo from '../../assets/img/logo.png'
 
 interface SignUpProps {}
 
@@ -57,8 +58,9 @@ const SignUp: React.FC<SignUpProps> = () => {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">GadMinz Chat</span>
-        <span className="title">Регистрация</span>
+        <div className="logo">
+          <img src={logo} alt="logo" />
+        </div>
         {err && <div className="error">Что-то пошло не так</div>}
         <form onSubmit={handleSubmit(onSubmit)}>
           <input

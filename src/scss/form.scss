@@ -22,14 +22,10 @@
     }
 
     .logo {
-      color: $content-primary;
-      font-weight: bold;
-      font-size: 24px;
-    }
-
-    .title {
-      color: $text-primary;
-      font-size: 12px;
+      width: 80%;
+      img {
+        max-width: 100%;
+      }
     }
 
     form {
