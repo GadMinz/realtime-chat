@@ -3,13 +3,15 @@ import s from "./Chat.module.scss";
 import Messages from "./Messages/Messages";
 import Input from "./Messages/Input";
 
-interface ChatProps {}
+interface ChatProps {
+    user: string
+}
 
-const Chat: React.FC<ChatProps> = () => {
+const Chat: React.FC<ChatProps> = ({user}) => {
   return (
     <div className={s.chat}>
       <div className={s.chat_info}>
-        <span>GadMinz</span>
+        <span>{user}</span>
         <div className={s.chat_icons}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
