@@ -26,7 +26,7 @@ const Input: React.FC<InputProps> = () => {
 
       uploadTask.on(
         (error) => {
-
+          console.log(error)
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -83,12 +83,12 @@ const Input: React.FC<InputProps> = () => {
         value={text}
       />
       <div className={s.send}>
-        <img src="" alt="" />
         <input
           type="file"
           style={{ display: "none" }}
           id="file"
           onChange={handleChange}
+          accept=".png,.jpg,.gif,.jpeg,.bmp"
         />
         <label htmlFor="file">
           <img src={attach} alt="attachment" />

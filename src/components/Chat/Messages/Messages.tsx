@@ -27,7 +27,6 @@ const Messages: React.FC<MessagesProps> = () => {
       unSub();
     };
   }, [chatId]);
-  console.log(messages);
   return (
     <div className={s.messages}>
       {messages.map((message) => (
